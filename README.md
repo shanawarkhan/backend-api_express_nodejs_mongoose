@@ -1,3 +1,8 @@
+Nodejs and Express Api :: Using mongoose to pull JSON data from mongodb. 
+Created routes /api/books and /api/restaurants. 
+Mongoose Schema for JSON data available in models. 
+Also, added bonus tool "generate-schema" for dynamically generating Mongoose Schema.
+
 Mongoose permitted SchemaTypes are:
 
 		String
