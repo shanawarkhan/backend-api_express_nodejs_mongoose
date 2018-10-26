@@ -19,11 +19,15 @@ var Restaurant = require('./models/restModel');
 
 // var bookRouter = express.Router();
 var restRouter = express.Router(); 
-
+var bookRouter = express.Router();
 var mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/imports', {
+	useMongoClient: true,
+});
+
 // Connecting Mongodb Database
-var db = mongoose.connect('mongodb://localhost/imports');
+//var db = mongoose.connect('mongodb://localhost/imports');
 
 	
 
@@ -45,19 +49,19 @@ var db = mongoose.connect('mongodb://localhost/imports');
 
 app.use(logger('dev'));
 
-// bookRouter.route('/Books')
-// 	.get(function(req, res) {
+bookRouter.route('/Books')
+	.get(function(req, res) {
 
-// 		// Adding query in find function
-// 		var query = req.query;
-// 		Book.find(query, function(err, books) {
-// 			if (err) {
-// 				res.status(500).send(err);
-// 			} else {
-// 				res.json(books);
-// 			}
-// 		});
-// 	});
+		// Adding query in find function
+		var query = req.query;
+		Book.find(query, function(err, books) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.json(books);
+			}
+		});
+	});
 
 restRouter.route('/Restaurants')
 	.get(function(req, res) {
@@ -72,7 +76,7 @@ restRouter.route('/Restaurants')
 
 // app.use('/api', bookRouter);
 app.use('/api', restRouter);
-
+app.use('/api', bookRouter);
 app.get('/api', function(req, res) {
 	res.send('Welcome to my Api!');
 })

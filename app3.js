@@ -5,7 +5,6 @@
 // See changes on line 46 47 for adding "query"
 
 // Route
-	// http://localhost:3000/api/Books?genre=Drama
 	// http://localhost:3000/api/Books?genre=Comedy
 
 var express = require('express');
@@ -21,7 +20,9 @@ var bookRouter = express.Router();
 var mongoose = require('mongoose');
 
 // Connecting Mongodb Database
-var db = mongoose.connect('mongodb://localhost/imports');
+mongoose.connect('mongodb://localhost/imports', {
+	useMongoClient: true,
+});
 
 
 	app.use(logger('dev'));

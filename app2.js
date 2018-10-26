@@ -16,8 +16,12 @@ var bookRouter = express.Router();
 
 var mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/imports', {
+	useMongoClient: true,
+});
+
 // Connecting Mongodb Database
-var db = mongoose.connect('mongodb://localhost/imports');
+//var db = mongoose.connect('mongodb://localhost/imports');
 
 // Model for Mongoose Schema
 

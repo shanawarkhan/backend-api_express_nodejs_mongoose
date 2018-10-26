@@ -19,17 +19,30 @@ db.once('open', function() {
 
 var Cat = mongoose.model('Cat', { name: 'string', color: 'string'});
 
-var myCat = new Cat({ 
+/*var myCat = new Cat({ 
 				name: 'Shadow',
 				color: 'Black'
 			});
-
-myCat.save(function(err) {
+*/
+/*myCat.save(function(err) {
 	if (err) {
 		console.log(err);
 	} else {
 		console.log('meow');
 	}
+});
+*/
+
+var gnr = new Band({
+  name: "Guns N' Roses",
+  members: ['Axl', 'Slash']
+});
+
+var promise = myCat.save();
+assert.ok(promise instanceof Promise);
+
+promise.then(function (doc) {
+  assert.equal(doc.name, "Shadow");
 });
 
 var index = require('./routes/index');
